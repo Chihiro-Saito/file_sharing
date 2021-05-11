@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Listing Users</title>
+	<th:block th:insert="file/fragments/base :: head"></th:block>
+</head>
+
+<body>
+	<th:block th:insert="file/fragments/header :: header"></th:block>
+	<div class="container body-container">
+		<h1>Listing Users</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>名前</th>
+					<th>表示名</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user:${users}" th:object="${user}">
+					<td th:text="*{username}"></td>
+					<td th:text="*{displayName}"></td>
+					<td>
+						<a class="btn btn-default btn-xs"
+							th:href="@{/file/user_master/show/{username}(username=*{username})}">詳細</a>
+					</td>
+					<td>
+						<a class="btn btn-default btn-xs"
+							th:href="@{/file/user_master/edit/{username}(username=*{username})}">編集</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a class="btn btn-outline-dark" th:href="@{/file/user_master/new}">新規登録</a>
+	</div>
+	<th:block th:insert="file/fragments/base :: scripts"></th:block>
+	<th:block th:insert="file/fragments/footer :: footer"></th:block>
+</body>
+
+</html>

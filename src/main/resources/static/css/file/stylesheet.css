@@ -1,0 +1,82 @@
+.body-container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    position: relative;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-form {
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0
+        rgba(0, 0, 0, 0.19);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-form h3 {
+    text-align: center;
+    color: #333;
+}
+
+.btnSubmit {
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+
+.login-form .btnSubmit {
+    font-weight: 600;
+    color: #fff;
+    background-color: #4e73df;
+}
+
+.form-group {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.file-container {
+    display: table;
+    width: 400px;
+}
+.file-container tfoot > tr > td {
+    border-style: hidden;
+}
+
+.footer-copyright {
+    text-align: center;
+    background: #4e73df;
+    color: #fff;
+}
+.file-ltems {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.file-ltem {
+  width: 32%;
+  height: 280px;
+  padding: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #5a5c69;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.file-thumbnail{
+  width: 200px;
+  height: 200px;
+  object-fit: cover; 
+}
+
+.file-page{
+	display:inline;
+}
