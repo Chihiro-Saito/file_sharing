@@ -70,7 +70,7 @@ Spring Boot2で作ったWebシステムのサンプルコードです。<br>
 This software is released under the MIT License, see LICENSE.
 
 ## Authors
-Seika.Saito
+Chihiro.Saito
 
 ## Reference
 [Spring ドキュメント](https://spring.pleiades.io/)<br>
