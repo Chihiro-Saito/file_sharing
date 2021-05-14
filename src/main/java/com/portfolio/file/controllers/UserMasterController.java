@@ -86,8 +86,8 @@ public class UserMasterController {
 	/**
 	 * ユーザー編集画面表示.
 	 *
-	 * @param username  ユーザー名
-	 * @param model Modelクラス
+	 * @param username ユーザー名
+	 * @param model    Modelクラス
 	 * @return ユーザー編集画面のテンプレートパス
 	 */
 	@GetMapping("edit/{username}")
@@ -100,8 +100,8 @@ public class UserMasterController {
 	/**
 	 * ユーザー詳細画面表示.
 	 *
-	 * @param username  ユーザー名
-	 * @param model Modelクラス
+	 * @param username ユーザー名
+	 * @param model    Modelクラス
 	 * @return ユーザー詳細画面のテンプレートパス
 	 */
 	@GetMapping("show/{username}")

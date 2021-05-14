@@ -81,7 +81,7 @@ public class HomeController {
 			model.addAttribute("loginUsername", "");
 		} else {
 			// ログインユーザーの詳細情報がNULL以外の場合
-			model.addAttribute("loginUsername", userDetails.getUsername());			
+			model.addAttribute("loginUsername", userDetails.getUsername());
 		}
 
 		return HOME_TEMPLATE_PATH;

@@ -47,7 +47,7 @@ public class CustomCheckValidatorr implements ConstraintValidator<CustomCheck, O
 	/**
 	 * バリデーション.
 	 * 
-	 * @param value 入力値
+	 * @param value   入力値
 	 * @param context バリデーション情報
 	 * @return 検証結果(trueの場合OK、falseの場合NG)
 	 */

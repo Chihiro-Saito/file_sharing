@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, String> {
 	/**
 	 * ユーザー名に紐付くUser(Entity)クラスの件数を取得.
 	 *
-	 * @param username　ユーザー名
+	 * @param username ユーザー名
 	 * @return 件数
 	 */
 	@Query("select count(e) from User e WHERE e.username = :username")

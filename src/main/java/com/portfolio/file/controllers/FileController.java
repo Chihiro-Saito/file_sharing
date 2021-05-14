@@ -250,28 +250,28 @@ public class FileController {
 	 * 
 	 * @param id ファイルID
 	 * @return 遷移先(null)
-	 * @throws UnsupportedEncodingException 
+	 * @throws UnsupportedEncodingException
 	 */
 	@GetMapping("sharing/download/{id}")
 	@ResponseBody
 	public String download(@PathVariable int id, HttpServletResponse res) throws UnsupportedEncodingException {
 		// ファイル情報を取得
 		File file = fileService.findOne(id);
-        // ファイルデータを取得
-        byte[] fileData = file.getData();
+		// ファイルデータを取得
+		byte[] fileData = file.getData();
 
-        // ファイル名を取得
-        String fileName = new String(file.getName().getBytes("Windows-31J"), "ISO8859_1");
+		// ファイル名を取得
+		String fileName = new String(file.getName().getBytes("Windows-31J"), "ISO8859_1");
 
-        // レスポンスオブジェクトのヘッダー情報を設定
-        res.setContentType("application/octet-stream");
-        // ヘッダーにファイル名を設定
-        res.setHeader("Content-Disposition", "attachment; filename=" + fileName);
+		// レスポンスオブジェクトのヘッダー情報を設定
+		res.setContentType("application/octet-stream");
+		// ヘッダーにファイル名を設定
+		res.setHeader("Content-Disposition", "attachment; filename=" + fileName);
 
-        // ファイルサイズをResponseのメッセージボディのサイズに設定
-        res.setContentLength(fileData.length);
+		// ファイルサイズをResponseのメッセージボディのサイズに設定
+		res.setContentLength(fileData.length);
 
-        try (
+		try (
 				// ResponseのOutputStreamを代入
 				OutputStream os = res.getOutputStream();) {
 			// OutputStreamにファイルデータを書き出す

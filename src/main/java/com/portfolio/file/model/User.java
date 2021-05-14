@@ -13,31 +13,30 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
-    /**
-     * ユーザー名.
-     * プライマリーキー.
-     */
-    @Id
-    @Column(name = "username", length = 30, nullable = false)
-    private String username;
+	/**
+	 * ユーザー名. プライマリーキー.
+	 */
+	@Id
+	@Column(name = "username", length = 30, nullable = false)
+	private String username;
 
-    /** ユーザー名（表示名）. */
-    @Column(name = "display_name", length = 60, nullable = false)
-    private String displayName;
- 
-    /** パスワード. */
-    @Column(name = "password", length = 255, nullable = false)
-    private String password;
+	/** ユーザー名（表示名）. */
+	@Column(name = "display_name", length = 60, nullable = false)
+	private String displayName;
 
-    /** ロール. */
-    @Column(name = "role", length = 120, nullable = false)
-    private String role;
+	/** パスワード. */
+	@Column(name = "password", length = 255, nullable = false)
+	private String password;
 
-    /** 有効フラグ. */
-    @Column(name = "is_enabled", nullable = false)
-    private boolean isEnabled;
+	/** ロール. */
+	@Column(name = "role", length = 120, nullable = false)
+	private String role;
+
+	/** 有効フラグ. */
+	@Column(name = "is_enabled", nullable = false)
+	private boolean isEnabled;
 
 }

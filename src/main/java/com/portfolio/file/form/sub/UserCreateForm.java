@@ -18,52 +18,49 @@ import lombok.Setter;
 @Setter
 public class UserCreateForm extends UserBaseForm {
 
-	/**　シリアルバージョンUID. */
+	/** シリアルバージョンUID. */
 	private static final long serialVersionUID = 1L;
 
-
-	/**　正規表現(半角英数字). */
+	/** 正規表現(半角英数字). */
 	private static final String ALPHANUMERIC_REGEXP = "[a-zA-Z0-9.]*";
 
-	/**　正規表現(半角英数字)のエラーメッセージ. */
+	/** 正規表現(半角英数字)のエラーメッセージ. */
 	private static final String ALPHANUMERIC_MESSAGE = "半角英字、数字、ピリオドを使用できます";
 
 	@NotBlank
-    @Size(max=30)
+	@Size(max = 30)
 	@Pattern(regexp = ALPHANUMERIC_REGEXP, message = ALPHANUMERIC_MESSAGE)
-    @CustomCheck(uniqueUsername = "username", message = "既に登録されています")
-    private String username;
+	@CustomCheck(uniqueUsername = "username", message = "既に登録されています")
+	private String username;
 
-
-    @NotBlank
-    @Size(max=255)
+	@NotBlank
+	@Size(max = 255)
 	@Pattern(regexp = ALPHANUMERIC_REGEXP, message = ALPHANUMERIC_MESSAGE)
-    private String password;
+	private String password;
 
-    /**
-     * Formクラスの設定内容を文字列で出力する.
-     */
-    @Override
-    public String toString() {
-        return "User(username: " + this.getUsername() + ", displayName: " + super.getDisplayName() +
-                ", password: " + this.getPassword() + ", role: " + super.getRole() +
-                ", isEnabled: " + super.isEnabled() +")";
-    }
+	/**
+	 * Formクラスの設定内容を文字列で出力する.
+	 */
+	@Override
+	public String toString() {
+		return "User(username: " + this.getUsername() + ", displayName: " + super.getDisplayName() + ", password: "
+				+ this.getPassword() + ", role: " + super.getRole() + ", isEnabled: " + super.isEnabled() + ")";
+	}
 
-    /**
-     * Formの設定内容をUser Entityクラスに変換する.
-     *
-      * @return ユーザー情報(Entityクラス)
-     */
-    public User toEntity(){
+	/**
+	 * Formの設定内容をUser Entityクラスに変換する.
+	 *
+	 * @return ユーザー情報(Entityクラス)
+	 */
+	public User toEntity() {
 
-        User user = new User();
-        user.setUsername(this.getUsername());
-        user.setDisplayName(super.getDisplayName());
-        user.setPassword(this.getPassword());
-        user.setRole(super.getRole());
-        user.setEnabled(super.isEnabled());
+		User user = new User();
+		user.setUsername(this.getUsername());
+		user.setDisplayName(super.getDisplayName());
+		user.setPassword(this.getPassword());
+		user.setRole(super.getRole());
+		user.setEnabled(super.isEnabled());
 
-        return user;
-    }
+		return user;
+	}
 }

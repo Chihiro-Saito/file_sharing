@@ -17,18 +17,18 @@ import com.portfolio.file.annotation.impl.CustomCheckValidatorr;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Constraint(validatedBy={CustomCheckValidatorr.class})
+@Constraint(validatedBy = { CustomCheckValidatorr.class })
 @Repeatable(CustomCheckAnnotation.class)
-public  @interface CustomCheck {
-    /** 表示するエラーメッセージ(アノテーション属性で指定). */
-    String message();
+public @interface CustomCheck {
+	/** 表示するエラーメッセージ(アノテーション属性で指定). */
+	String message();
 
-    /** 特定のバリデーショングループがカスタマイズできるような設定. */
-    Class<?>[] groups() default {};
+	/** 特定のバリデーショングループがカスタマイズできるような設定. */
+	Class<?>[] groups() default {};
 
-    /** チェック対象のオブジェクトになんらかのメタ情報を与えるためだけの宣言. */
-    Class<? extends Payload>[] payload() default {};
+	/** チェック対象のオブジェクトになんらかのメタ情報を与えるためだけの宣言. */
+	Class<? extends Payload>[] payload() default {};
 
-    /** ユーザー名(アノテーション属性で指定). */
-    String uniqueUsername();
+	/** ユーザー名(アノテーション属性で指定). */
+	String uniqueUsername();
 }

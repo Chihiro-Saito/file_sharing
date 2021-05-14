@@ -15,17 +15,17 @@
 			<div class="mb-3">
 				<input type="file" name="multipartFile" th:field="*{multipartFile}" class="form-control" /><br />
 				<span th:if="${#fields.hasErrors('multipartFile')}"
-                    th:errors="*{multipartFile}">
-                </span>
-                <br />
-                <span class="d-flex justify-content-between">
-                    <button type="submit" class="btn btn-outline-dark">アップロード</button>
-                    <a class="btn btn-outline-dark" th:href="@{/file/home}">HOME画面へ</a>
-                </span>
-            </div>
-        </form>
-    </div>
-    <th:block th:insert="file/fragments/base :: scripts"></th:block>
-    <th:block th:insert="file/fragments/footer :: footer"></th:block>
+					th:errors="*{multipartFile}">
+				</span>
+				<br />
+				<span class="d-flex justify-content-between">
+					<button type="submit" class="btn btn-outline-dark">アップロード</button>
+					<a class="btn btn-outline-dark" th:href="@{/file/home}">HOME画面へ</a>
+				</span>
+			</div>
+		</form>
+	</div>
+	<th:block th:insert="file/fragments/base :: scripts"></th:block>
+	<th:block th:insert="file/fragments/footer :: footer"></th:block>
 </body>
 </html>

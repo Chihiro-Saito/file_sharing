@@ -22,7 +22,7 @@ public class FileRequiredValidator implements ConstraintValidator<FileRequired, 
 	/**
 	 * バリデーション.
 	 * 
-	 * @param value 入力値
+	 * @param value   入力値
 	 * @param context バリデーション情報
 	 * @return 検証結果(trueの場合OK、falseの場合NG)
 	 */
@@ -40,6 +40,6 @@ public class FileRequiredValidator implements ConstraintValidator<FileRequired, 
 			return false;
 
 		}
-		
+
 	}
 }

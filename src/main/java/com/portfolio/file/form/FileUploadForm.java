@@ -16,10 +16,10 @@ import lombok.Setter;
 @Setter
 public class FileUploadForm implements Serializable {
 
-	/**　シリアルバージョンUID. */
-    private static final long serialVersionUID = 1L;
+	/** シリアルバージョンUID. */
+	private static final long serialVersionUID = 1L;
 
-    @FileRequired
-    private MultipartFile multipartFile;
+	@FileRequired
+	private MultipartFile multipartFile;
 
 }

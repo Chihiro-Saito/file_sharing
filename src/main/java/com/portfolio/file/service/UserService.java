@@ -27,7 +27,7 @@ public interface UserService {
 	/**
 	 * User(Entity)クラスのデータを保存する.
 	 *
-	 * @param user　User(Entity)クラス
+	 * @param user User(Entity)クラス
 	 * @return 保存したUser(Entity)クラス
 	 */
 	public User save(User user);

@@ -21,80 +21,72 @@ import com.portfolio.file.service.impl.UserDetailsServiceImpl;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    /**
-     * ユーザー情報Serviceクラス(実装クラス).
-     */
-    @Autowired
-    UserDetailsServiceImpl service;
+	/**
+	 * ユーザー情報Serviceクラス(実装クラス).
+	 */
+	@Autowired
+	UserDetailsServiceImpl service;
 
+	/**
+	 * パスワードの暗号化クラスを返却する.
+	 *
+	 * @return BCryptPasswordEncoder
+	 */
+	@Bean
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
-    /**
-     * パスワードの暗号化クラスを返却する.
-     *
-     * @return BCryptPasswordEncoder
-     */
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+	/**
+	 * 認証を除外する対象を設定する.
+	 *
+	 * @param web WebSecurity
+	 */
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		// spring securityで無視するリクエストパスを設定
+		// 静的ファイルを除外する
+		web.ignoring().antMatchers("/css/**", "/resources/**");
 
+	}
 
-    /**
-     * 認証を除外する対象を設定する.
-     *
-     * @param web WebSecurity
-     */
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        // spring securityで無視するリクエストパスを設定
-        // 静的ファイルを除外する
-        web.ignoring().antMatchers("/css/**", "/resources/**");
+	/**
+	 * 認証方法を設定する.
+	 *
+	 * @param auth AuthenticationManagerBuilder
+	 */
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		// 拡張してDB認証を実行する
+		auth.userDetailsService(service);
+	}
 
-    }
-
-    /**
-     * 認証方法を設定する.
-     *
-     * @param auth AuthenticationManagerBuilder
-     */
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // 拡張してDB認証を実行する
-        auth.userDetailsService(service);
-    }
-
-    /**
-     * 認証対象やログイン・ログアウト処理を設定する.
-     *
-     * @param http HttpSecurity
-     */
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        // ログイン処理の認証ルールを設定
-        http.authorizeRequests()
-        // TODO 開発中のみ有効にする
-        .antMatchers("/**").permitAll()
-        // TODO 開発が終わったら、認証を有効にする
-        //		.antMatchers("/file", "/file/login").permitAll() // 認証なしでアクセス可能なパス
-        //		.antMatchers("/file/user_master/**").hasAuthority("ADMIN")     // ADMINロールを持つユーザーのみアクセス許可
-        //		.antMatchers("/file/user_master/**").hasAuthority("ADMIN")   // ADMINロールを持つユーザーのみアクセス許可
-        .anyRequest().authenticated() // それ以外は認証が必要
-        .and()
-        .sessionManagement().sessionFixation().none()
-        .and()
-        .formLogin()
-        .loginPage("/file/login")
-        .loginProcessingUrl("/file/login") // ログインフォームのアクションに指定したURL[action="@{/login}"]を設定
-        .usernameParameter("username") // ログインフォームのユーザー欄のname属性を設定
-        .passwordParameter("password") // ログインフォームのパスワード欄のname属性を設定
-        .successForwardUrl("/file/success") // ログイン成功時に遷移するURL
-        .failureUrl("/file/login?error") // ログイン失敗時に遷移するURL
-        .permitAll()
-        .and()
-        .logout()
-        .logoutUrl("/file/logout")
-        .permitAll()
-        .logoutRequestMatcher(new AntPathRequestMatcher("/file/logout"));
-    }
+	/**
+	 * 認証対象やログイン・ログアウト処理を設定する.
+	 *
+	 * @param http HttpSecurity
+	 */
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		// ログイン処理の認証ルールを設定
+		http.authorizeRequests()
+				// TODO 開発中のみ有効にする
+				.antMatchers("/**").permitAll()
+				// TODO 開発が終わったら、認証を有効にする
+				// .antMatchers("/file", "/file/login").permitAll() // 認証なしでアクセス可能なパス
+				// .antMatchers("/file/user_master/**").hasAuthority("ADMIN") //
+				// ADMINロールを持つユーザーのみアクセス許可
+				// .antMatchers("/file/user_master/**").hasAuthority("ADMIN") //
+				// ADMINロールを持つユーザーのみアクセス許可
+				.anyRequest().authenticated() // それ以外は認証が必要
+				.and().sessionManagement().sessionFixation().none().and().formLogin().loginPage("/file/login")
+				.loginProcessingUrl("/file/login") // ログインフォームのアクションに指定したURL[action="@{/login}"]を設定
+				.usernameParameter("username") // ログインフォームのユーザー欄のname属性を設定
+				.passwordParameter("password") // ログインフォームのパスワード欄のname属性を設定
+				.successForwardUrl("/file/success") // ログイン成功時に遷移するURL
+				.failureUrl("/file/login?error") // ログイン失敗時に遷移するURL
+				.permitAll().and().logout().logoutUrl("/file/logout").permitAll()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/file/logout"));
+	}
 
 }
