@@ -11,39 +11,45 @@
 	<div class="container body-container">
 		<h1>Show User</h1>
 		<table class="table user-container" th:object="${user}">
-			<tr>
-				<th>名前</th>
-				<td th:text="*{username}"></td>
-			</tr>
-			<tr>
-				<th>表示名</th>
-				<td th:text="*{displayName}"></td>
-			</tr>
-			<tr>
-				<th>ロール</th>
-				<td>
-					<select name="role" class="form-control" disabled>
-						<option th:each="item : ${T(com.portfolio.file.util.RoleItems).ROLEITEMS}" th:value="${item.key}"
-							th:text="${item.value}" th:selected="${item.key} == *{role}">
-							pulldown
-						</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<th>有効フラグ</th>
-				<td>
-					<div th:each="item : ${T(com.portfolio.file.util.EnabledItems).ENABLEDITEMS}" class="form-check-inline">
-						<input type="radio" class="form-check-input" th:value="${item.key}" th:text="${item.value}"
-							th:checked="${item.key} == *{enabled}" disabled />
-					</div>
-				</td>
-			</tr>
-			<caption>
-				<span class="d-flex justify-content-end">
-					<a class="btn btn-outline-dark" th:href="@{/file/user_master/index}">一覧画面へ</a>
-				</span>
-			</caption>
+			<tbody>
+				<tr>
+					<th>名前</th>
+					<td th:text="*{username}"></td>
+				</tr>
+				<tr>
+					<th>表示名</th>
+					<td th:text="*{displayName}"></td>
+				</tr>
+				<tr>
+					<th>ロール</th>
+					<td>
+						<select name="role" class="form-control" disabled>
+							<option th:each="item : ${T(com.portfolio.file.util.RoleItems).ROLEITEMS}" th:value="${item.key}"
+								th:text="${item.value}" th:selected="${item.key} == *{role}">
+								pulldown
+							</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>有効フラグ</th>
+					<td>
+						<div th:each="item : ${T(com.portfolio.file.util.EnabledItems).ENABLEDITEMS}" class="form-check-inline">
+							<input type="radio" class="form-check-input" th:value="${item.key}" th:text="${item.value}"
+								th:checked="${item.key} == *{enabled}" disabled />
+						</div>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<span class="d-flex justify-content-end">
+							<a class="btn btn-outline-dark" th:href="@{/file/user_master/index}">一覧画面へ</a>
+						</span>
+					</td>
+				</tr>
+			</tfoot>
 		</table>
 	</div>
 	<th:block th:insert="file/fragments/base :: scripts"></th:block>
