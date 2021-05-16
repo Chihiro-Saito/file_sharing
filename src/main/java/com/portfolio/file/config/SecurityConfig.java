@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		// spring securityで無視するリクエストパスを設定
 		// 静的ファイルを除外する
-		web.ignoring().antMatchers("/css/**", "/resources/**");
+		web.ignoring().antMatchers("/css/**", "/webjars/**");
 
 	}
 
